@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: ecr-k8s-secret-creator
-  namespace: flux
+  namespace: development
 spec:
   replicas: 1
   selector:
@@ -23,7 +23,10 @@ spec:
           name: ecr-k8s-secret-creator
           args:
             - "-secretName=ecr-docker-secret"
-            - "-region=us-east-1"
+            - "-region=eu-west-2"
+            - "-profile=XXXXXXXXXXXX"
+            - "-secretType=kubernetes.io/dockerconfigjson"
+            - "-interval=3600"
           resources:
             requests:
               cpu: 5m

@@ -2,19 +2,19 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: flux
+  name: development
 ---
 kind: ServiceAccount
 apiVersion: v1
 metadata:
   name: ecr-k8s-secret-creator
-  namespace: flux
+  namespace: development
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: ecr-k8s-secret-creator
-  namespace: flux
+  namespace: development
 rules:
 - apiGroups: [""]
   resources: ["secrets"]
@@ -31,4 +31,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: ecr-k8s-secret-creator
-  namespace: flux
+  namespace: development
